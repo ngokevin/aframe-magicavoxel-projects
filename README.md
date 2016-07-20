@@ -3,7 +3,7 @@
 Personal [MagicaVoxel](https://ephtracy.github.io/) projects rendered in
 [A-Frame](https://aframe.io).
 
-![city](img/city.png)
+![A-Frame in MagicaVoxel](aframe/render.png)
 
 ## Tutorial
 

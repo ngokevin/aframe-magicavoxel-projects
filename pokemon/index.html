@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A-Frame</title>
+    <script src="../lib/aframe.min.js"></script>
+    <script src="../lib/aframe-extras.loaders.min.js"></script>
+    <script src="../lib/aframe-animation-component.min.js"></script>
+    <script src="../lib/aframe-particle-system-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="stadium-ply" src="models/stadium.ply"></a-asset-item>
+        <img id="charizard" src="images/charizard.png">
+        <audio autoplay loop src="audio/pokemon-gym-battle.mp3"></audio>
+      </a-assets>
+
+      <!-- Model. -->
+      <a-entity ply-model="src: #stadium-ply"
+                position="1 -11 -25" scale=".8 .8 .8" rotation="-90 0 0"></a-entity>
+
+      <!-- Particles. -->
+      <a-entity particle-system="preset: dust; particleCount: 1000" position="0 2.5 -15"></a-entity>
+
+      <a-image src="#charizard" transparent="true" shader="standard" position="0 7 -40" scale="20 20 1"></a-image>
+
+      <!-- Lights. -->
+      <a-light type="ambient" color="#777"></a-light>
+      <a-entity animation="property: rotation; to: 0 360 0; easing: linear; loop: true;
+                           duration: 2000">
+        <a-light type="point" color="#FFF" position="-10 10 -15" intensity="0.3"></a-light>
+        <a-light type="point" color="#FFF" position="10 10 -15" intensity="0.3"></a-light>
+      </a-entity>
+
+      <a-sky color="#111"></a-sky>
+    </a-scene>
+  </body>
+</html>
