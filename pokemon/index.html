@@ -24,6 +24,7 @@
     <a-scene>
       <a-assets>
         <a-asset-item id="stadium-ply" src="models/stadium.ply"></a-asset-item>
+        <a-asset-item id="seating-ply" src="models/seating.ply"></a-asset-item>
         <img id="charizard" src="images/charizard.png">
         <audio autoplay loop src="audio/pokemon-gym-battle.mp3"></audio>
       </a-assets>
@@ -31,6 +32,15 @@
       <!-- Model. -->
       <a-entity ply-model="src: #stadium-ply"
                 position="0 -11 -27" scale=".8 .8 .8" rotation="-90 0 0"></a-entity>
+      <!-- Facing user. -->
+      <a-entity ply-model="src: #seating-ply"
+                position="0 -8 -90" scale=".8 .8 .8" rotation="-90 90 0"></a-entity>
+      <!-- Stage left. -->
+      <a-entity ply-model="src: #seating-ply"
+                position="-65 -8 -10" scale=".8 .8 .8" rotation="-90 180 0"></a-entity>
+      <!-- Stage right. -->
+      <a-entity ply-model="src: #seating-ply"
+                position="65 -8 -10" scale=".8 .8 .8" rotation="-90 0 0"></a-entity>
 
       <!-- Particles. -->
       <a-entity particle-system="preset: dust; particleCount: 1000" position="0 2.5 -15"></a-entity>
