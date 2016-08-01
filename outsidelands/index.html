@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Outside Lands VR</title>
+    <script src="../lib/aframe.min.js"></script>
+    <script src="../lib/aframe-animation-component.min.js"></script>
+    <script src="../lib/aframe-audio-visualizer-components.min.js"></script>
+    <script src="../lib/aframe-event-set-component.min.js"></script>
+    <script src="../lib/aframe-layout-component.min.js"></script>
+    <script src="../lib/aframe-entity-generator-component.js"></script>
+    <script src="../lib/aframe-particle-system-component.min.js"></script>
+    <script src="components/audio-visualizer-spectrum-scale.js"></script>
+    <script src="components/pause.js"></script>
+    <script src="components/play-audio.js"></script>
+    <script src="components/scale-y-color.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="osl-obj" src="models/outsidelands.obj"></a-asset-item>
+        <a-asset-item id="osl-mtl" src="models/outsidelands.mtl"></a-asset-item>
+        <img id="grass" src="img/grass.jpg">
+        <img id="rhead" src="img/rhead.jpg">
+        <img id="lcd" src="img/lcd.jpg">
+        <img id="lana" src="img/lana.jpg">
+        <a-mixin id="album" material="opacity: 0.6"></a-mixin>
+        <a-mixin id="bar"
+                 geometry="primitive: box" material="color: black; opacity: 0.8"
+                 scale-y-color="from: 30 30 30; to: 240 240 240; maxScale: 10"></a-mixin>
+        <audio id="daydream" autoplay src="audio/daydream.mp3"></audio>
+        <audio id="dance" src="audio/dance.mp3"></audio>
+        <audio id="ss" src="audio/ss.mp3"></audio>
+      </a-assets>
+
+      <!-- Stage. -->
+      <a-entity obj-model="obj: #osl-obj; mtl: #osl-mtl"
+                scale=".5 .4 .5" position="0 0 -15"></a-entity>
+
+      <!-- On-stage audio visualization. -->
+      <a-entity position="0 2 -20">
+        <a-entity id="audioViz"
+                  audio-visualizer="src: #daydream ;smoothingTimeConstant: 0.9"
+                  audio-visualizer-spectrum-scale="max: 50; multiplier: 0.06"
+                  entity-generator="mixin: bar; num: 256"
+                  layout="type: circle; radius: 8"
+                  rotation="0 135 0"></a-entity>
+        <!-- Stage light.-->
+        <a-light type="point" decay="2" distance="35"></a-light>
+      </a-entity>
+
+      <!-- Album UI. -->
+      <a-entity animation="property: position; dir: alternate; dur: 2000;
+                           loop: true; to: 0 0.02 0">
+        <a-curvedimage mixin="album" src="#rhead" position="-1 1 2" radius="4"
+                       play-audio="src: #rhead"
+                       event-set="_event: click; _target: #audioViz;
+                                  audio-visualizer.src: #rhead"
+                       theta-length="15" rotation="0 180 0"></a-curvedimage>
+        <a-image mixin="album" src="#lcd" position="0 1 -2"
+                 event-set="_event: click; _target: #audioViz;
+                            audio-visualizer.src: #dance"
+                 play-audio="src: #dance"></a-image>
+        <a-curvedimage mixin="album" src="#lana" position="0.6 1 2" radius="4"
+                       event-set="_event: click; _target: #audioViz;
+                                  audio-visualizer.src: #ss"
+                       play-audio="src: #ss"
+                       theta-length="15" rotation="0 160 0"></a-curvedimage>
+      </a-entity>
+
+      <!-- Lights. -->
+      <a-light type="ambient" color="#444"></a-light>
+      <a-entity light="type: spot; color: #BBB; penumbra: 0.8; decay: 0; distance: 50"
+                position="0 10 20" rotation="-15 0 0"></a-entity>
+
+      <a-entity camera="userHeight: 1.8" look-controls wasd-controls>
+        <a-cursor color="#DADADA"></a-cursor>
+      </a-entity>
+
+      <!-- Particles. -->
+      <a-entity particle-system="preset: dust; particleCount: 1000"
+                position="0 2.5 -5"></a-entity>
+
+      <!-- Ground. -->
+      <a-plane src="#grass" rotation="-90 0 0" height="100" width="100"
+               material="repeat: 80 80" roughness="1" metalness="0"></a-plane>
+
+      <!-- Sky. -->
+      <a-sky color="rgb(11, 16, 19)"></a-sky>
+    </a-scene>
+  </body>
+</html>
