@@ -9,7 +9,6 @@
     <script src="../lib/aframe-event-set-component.min.js"></script>
     <script src="../lib/aframe-layout-component.min.js"></script>
     <script src="../lib/aframe-entity-generator-component.js"></script>
-    <script src="../lib/aframe-particle-system-component.min.js"></script>
     <script src="components/audio-visualizer-spectrum-scale.js"></script>
     <script src="components/pause.js"></script>
     <script src="components/play-audio.js"></script>
@@ -24,10 +23,14 @@
         <img id="rhead" src="img/rhead.jpg">
         <img id="lcd" src="img/lcd.jpg">
         <img id="lana" src="img/lana.jpg">
-        <a-mixin id="album" material="opacity: 0.6"></a-mixin>
+        <a-mixin id="album" material="opacity: 0.6"
+                 animation__mouseenter="startEvents: mouseenter; property: scale;
+                                        to: 1.2 1.2 1.2"
+                 animation__mouseleave="startEvents: mouseleave; property: scale;
+                                        to: 1 1 1"></a-mixin>
         <a-mixin id="bar"
                  geometry="primitive: box" material="color: black; opacity: 0.8"
-                 scale-y-color="from: 30 30 30; to: 240 240 240; maxScale: 10"></a-mixin>
+                 scale-y-color="from: 30 30 30; to: 230 230 230; maxScale: 10"></a-mixin>
         <audio id="daydream" autoplay src="audio/daydream.mp3"></audio>
         <audio id="dance" src="audio/dance.mp3"></audio>
         <audio id="ss" src="audio/ss.mp3"></audio>
@@ -38,12 +41,12 @@
                 scale=".5 .4 .5" position="0 0 -15"></a-entity>
 
       <!-- On-stage audio visualization. -->
-      <a-entity position="0 2 -20">
+      <a-entity position="0 2 -17">
         <a-entity id="audioViz"
                   audio-visualizer="src: #daydream ;smoothingTimeConstant: 0.9"
                   audio-visualizer-spectrum-scale="max: 50; multiplier: 0.06"
-                  entity-generator="mixin: bar; num: 256"
-                  layout="type: circle; radius: 8"
+                  entity-generator="mixin: bar; num: 200"
+                  layout="type: circle; radius: 4.5"
                   rotation="0 135 0"></a-entity>
         <!-- Stage light.-->
         <a-light type="point" decay="2" distance="35"></a-light>
@@ -74,12 +77,9 @@
                 position="0 10 20" rotation="-15 0 0"></a-entity>
 
       <a-entity camera="userHeight: 1.8" look-controls wasd-controls>
-        <a-cursor color="#DADADA" raycaster="objects: [mixin='album']"></a-cursor>
+        <a-cursor color="#DADADA" raycaster="interval: 500; objects: [mixin='album']">
+        </a-cursor>
       </a-entity>
-
-      <!-- Particles. -->
-      <a-entity particle-system="preset: dust; particleCount: 1000"
-                position="0 2.5 -5"></a-entity>
 
       <!-- Ground. -->
       <a-plane src="#grass" rotation="-90 0 0" height="100" width="100"
