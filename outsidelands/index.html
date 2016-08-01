@@ -9,6 +9,7 @@
     <script src="../lib/aframe-event-set-component.min.js"></script>
     <script src="../lib/aframe-layout-component.min.js"></script>
     <script src="../lib/aframe-entity-generator-component.js"></script>
+    <script src="../lib/aframe-particle-system-component.min.js"></script>
     <script src="components/audio-visualizer-spectrum-scale.js"></script>
     <script src="components/pause.js"></script>
     <script src="components/play-audio.js"></script>
@@ -72,9 +73,13 @@
       <a-entity light="type: spot; color: #BBB; penumbra: 0.8; decay: 0; distance: 50"
                 position="0 10 20" rotation="-15 0 0"></a-entity>
 
-      <a-entity camera="userHeight: 1.8" look-controls>
-        <a-cursor color="#DADADA"></a-cursor>
+      <a-entity camera="userHeight: 1.8" look-controls wasd-controls>
+        <a-cursor color="#DADADA" raycaster="objects: [mixin='album']"></a-cursor>
       </a-entity>
+
+      <!-- Particles. -->
+      <a-entity particle-system="preset: dust; particleCount: 1000"
+                position="0 2.5 -5"></a-entity>
 
       <!-- Ground. -->
       <a-plane src="#grass" rotation="-90 0 0" height="100" width="100"
