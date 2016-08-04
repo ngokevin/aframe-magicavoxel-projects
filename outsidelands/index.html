@@ -34,17 +34,22 @@
                  geometry="primitive: box" material="color: black; opacity: 0.8"
                  scale-y-color="from: 30 30 30; to: 230 230 230; maxScale: 10"></a-mixin>
         <audio id="daydream" autoplay src="audio/daydream.mp3"></audio>
-        <audio id="dance" src="audio/dance.mp3"></audio>
-        <audio id="ss" src="audio/ss.mp3"></audio>
+        <audio id="dance" preload="none" src="audio/dance.mp3"></audio>
+        <audio id="ss" preload="none" src="audio/ss.mp3"></audio>
 
-        <video autoplay id="daydreamingTall" src="video/daydreaming-tall.mp4"></video>
+        <video autoplay muted id="daydreamingVid" src="video/daydreaming.mp4"></video>
+        <video autoplay muted id="daydreamingTall" src="video/daydreaming-tall.mp4"></video>
+        <video id="danceVid" preload="none" muted src="video/dance.mp4"></video>
+        <video id="danceTall" preload="none" muted src="video/dance-tall.mp4"></video>
+        <video id="summertimeVid" preload="none" muted src="video/summertime.mp4"></video>
+        <video id="summertimeTall" preload="none" muted src="video/summertime-tall.mp4"></video>
       </a-assets>
 
       <!-- Side videos. -->
       <a-video id="leftVideo" src="#daydreamingTall" height="15.2" width="8"
-               position="-14 10.8 -10.5"></a-video>
+               position="-14 10.8 -10.5" side="front"></a-video>
       <a-video id="rightVideo" src="#daydreamingTall" height="15.2" width="8"
-               position="14 10.8 -10.5"></a-video>
+               position="14 10.8 -10.5" side="front"></a-video>
 
       <!-- Stage. -->
       <a-entity obj-model="obj: #osl-obj; mtl: #osl-mtl"
@@ -59,7 +64,7 @@
                   layout="type: circle; radius: 4.5"
                   rotation="0 135 0"></a-entity>
         <!-- Video. -->
-        <a-video id="video" src="video/daydreaming.mp4" height="17" width="24"
+        <a-video id="video" src="#daydreamingVid" height="17" width="24" side="front"
                  position="0 7 -6"></a-video>
         <!-- Stage light.-->
         <a-light type="point" decay="2" distance="35" intensity="0.5"
@@ -74,9 +79,9 @@
                            loop: true; to: 0 0.02 0" position="0 0 -0">
         <a-curvedimage mixin="album" src="#rhead" position="-1 1 2" radius="4"
                        play-audio="src: #rhead"
-                       play-video="target: #video; src: video/daydreaming.mp4"
-                       play-video__2="target: #leftVideo; src: video/daydreaming-tall.mp4"
-                       play-video__3="target: #rightVideo; src: video/daydreaming-tall.mp4"
+                       play-video="target: #video; src: #daydreamingVid"
+                       play-video__2="target: #leftVideo; src: #daydreamingTall"
+                       play-video__3="target: #rightVideo; src: #daydreamingTall"
                        event-set="_event: click; _target: #audioViz;
                                   audio-visualizer.src: #rhead"
                        theta-length="15" rotation="0 180 0"
@@ -85,17 +90,17 @@
                  event-set="_event: click; _target: #audioViz;
                             audio-visualizer.src: #dance"
                  play-audio="src: #dance"
-                 play-video="target: #video; src: video/dance.mp4"
-                 play-video__2="target: #leftVideo; src: video/dance-tall.mp4"
-                 play-video__3="target: #rightVideo; src: video/dance-tall.mp4"
+                 play-video="target: #video; src: #danceVid"
+                 play-video__2="target: #leftVideo; src: #danceTall"
+                 play-video__3="target: #rightVideo; src: #danceTall"
         ></a-image>
         <a-curvedimage mixin="album" src="#lana" position="0.6 1 2" radius="4"
                        event-set="_event: click; _target: #audioViz;
                                   audio-visualizer.src: #ss"
                        play-audio="src: #ss"
-                       play-video__1="target: #video; src: video/summertime.mp4"
-                       play-video__2="target: #leftVideo; src: video/summertime-tall.mp4"
-                       play-video__3="target: #rightVideo; src: video/summertime-tall.mp4"
+                       play-video__1="target: #video; src: #summertimeVid"
+                       play-video__2="target: #leftVideo; src: #summertimeTall"
+                       play-video__3="target: #rightVideo; src: #summertimeTall"
                        theta-length="15" rotation="0 160 0"></a-curvedimage>
       </a-entity>
 
