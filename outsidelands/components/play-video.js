@@ -11,11 +11,8 @@ AFRAME.registerComponent('play-video', {
     var data = this.data;
 
     this.el.addEventListener(data.on, function () {
-      data.target.components.material.material.map.image.pause();
-      setTimeout(function () {
-        data.target.setAttribute('src', data.src);
-        data.target.components.material.material.map.image.play();
-      }, 50);
+      data.target.setAttribute('src', data.src);
+      data.target.components.material.material.map.image.play();
     });
   }
 });

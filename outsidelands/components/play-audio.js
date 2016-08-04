@@ -11,9 +11,8 @@ AFRAME.registerComponent('play-audio', {
       // Pause current audio.
       var audioEls = document.querySelectorAll('audio');
       for (var i = 0; i < audioEls.length; i++) {
-        audioEls[0].pause();
+        if (!audioEls[i].paused) { audioEls[i].pause(); }
       }
-
       data.src.play();
     });
   }

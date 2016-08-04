@@ -76,7 +76,8 @@
 
       <!-- Album UI. -->
       <a-entity animation="property: position; dir: alternate; dur: 2000;
-                           loop: true; to: 0 0.02 0" position="0 0 -0">
+                           loop: true; to: 0 0.02 0; stopEvents: click" position="0 0 -0"
+                animation__2="property: scale; startEvents: click; to: 0 0 0">
         <a-curvedimage mixin="album" src="#rhead" position="-1 1 2" radius="4"
                        play-audio="src: #rhead"
                        play-video="target: #video; src: #daydreamingVid"
