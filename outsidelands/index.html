@@ -8,6 +8,7 @@
     <script src="../lib/aframe-audio-visualizer-components.min.js"></script>
     <script src="../lib/aframe-event-set-component.min.js"></script>
     <script src="../lib/aframe-layout-component.min.js"></script>
+    <script src="../lib/aframe-bmfont-text-component.min.js"></script>
     <script src="../lib/aframe-entity-generator-component.js"></script>
     <script src="components/audio-visualizer-spectrum-scale.js"></script>
     <script src="components/pause.js"></script>
@@ -62,7 +63,7 @@
 
       <!-- Album UI. -->
       <a-entity animation="property: position; dir: alternate; dur: 2000;
-                           loop: true; to: 0 0.02 0">
+                           loop: true; to: 0 0.02 0" position="0 0 -0">
         <a-curvedimage mixin="album" src="#rhead" position="-1 1 2" radius="4"
                        play-audio="src: #rhead"
                        play-video="target: #video; src: video/daydreaming.mp4"
@@ -82,6 +83,12 @@
                        theta-length="15" rotation="0 160 0"></a-curvedimage>
       </a-entity>
 
+      <!-- Text. -->
+      <a-entity
+        bmfont-text="color: #888; text: Click-drag the reticle onto album cover to change song on desktop. Works with Rift + Vive."
+        rotation="-90 0 0"
+        position="-2.3 0.1 -1.9"></a-entity>
+
       <!-- Lights. -->
       <a-light type="ambient" color="#444"></a-light>
       <a-entity
@@ -89,10 +96,9 @@
         position="0 10 20" rotation="-15 0 0"
         animation="property: rotation; dir: alternate; loop: true; to: 0 0 0"></a-entity>
 
-      <a-entity camera="userHeight: 1.8" look-controls wasd-controls>
-        <a-cursor color="#DADADA" raycaster="interval: 500; objects: [mixin='album']">
-        </a-cursor>
-      </a-entity>
+      <a-camera>
+        <a-cursor color="#DADADA" raycaster="interval: 500; objects: [mixin='album']"></a-cursor>
+      </a-camera>
 
       <!-- Ground. -->
       <a-plane src="#grass" rotation="-90 0 0" height="100" width="100"
