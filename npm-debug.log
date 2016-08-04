@@ -2,10 +2,10 @@
 1 verbose cli [ '/Users/ngoke/.nvm/v0.12.6/bin/node',
 1 verbose cli   '/Users/ngoke/.nvm/v0.12.6/bin/npm',
 1 verbose cli   'run',
-1 verbose cli   'gphages' ]
+1 verbose cli   'dev' ]
 2 info using npm@2.11.2
 3 info using node@v0.12.6
-4 verbose stack Error: missing script: gphages
+4 verbose stack Error: missing script: dev
 4 verbose stack     at run (/Users/ngoke/.nvm/v0.12.6/lib/node_modules/npm/lib/run-script.js:142:19)
 4 verbose stack     at /Users/ngoke/.nvm/v0.12.6/lib/node_modules/npm/lib/run-script.js:58:5
 4 verbose stack     at /Users/ngoke/.nvm/v0.12.6/lib/node_modules/npm/node_modules/read-package-json/read-json.js:345:5
@@ -18,10 +18,10 @@
 4 verbose stack     at FSReqWrap.oncomplete (evalmachine.<anonymous>:95:15)
 5 verbose cwd /Users/ngoke/Code/magica-voxel-projects
 6 error Darwin 14.4.0
-7 error argv "/Users/ngoke/.nvm/v0.12.6/bin/node" "/Users/ngoke/.nvm/v0.12.6/bin/npm" "run" "gphages"
+7 error argv "/Users/ngoke/.nvm/v0.12.6/bin/node" "/Users/ngoke/.nvm/v0.12.6/bin/npm" "run" "dev"
 8 error node v0.12.6
 9 error npm  v2.11.2
-10 error missing script: gphages
+10 error missing script: dev
 11 error If you need help, you may report this error at:
 11 error     <https://github.com/npm/npm/issues>
 12 verbose exit [ 1, true ]
