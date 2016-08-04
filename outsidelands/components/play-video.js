@@ -5,6 +5,8 @@ AFRAME.registerComponent('play-video', {
     on: {default: 'click'},
   },
 
+  multiple: true,
+
   init: function () {
     var data = this.data;
 

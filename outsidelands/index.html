@@ -36,7 +36,15 @@
         <audio id="daydream" autoplay src="audio/daydream.mp3"></audio>
         <audio id="dance" src="audio/dance.mp3"></audio>
         <audio id="ss" src="audio/ss.mp3"></audio>
+
+        <video autoplay id="daydreamingTall" src="video/daydreaming-tall.mp4"></video>
       </a-assets>
+
+      <!-- Side videos. -->
+      <a-video id="leftVideo" src="#daydreamingTall" height="15.2" width="8"
+               position="-14 10.8 -10.5"></a-video>
+      <a-video id="rightVideo" src="#daydreamingTall" height="15.2" width="8"
+               position="14 10.8 -10.5"></a-video>
 
       <!-- Stage. -->
       <a-entity obj-model="obj: #osl-obj; mtl: #osl-mtl"
@@ -67,19 +75,27 @@
         <a-curvedimage mixin="album" src="#rhead" position="-1 1 2" radius="4"
                        play-audio="src: #rhead"
                        play-video="target: #video; src: video/daydreaming.mp4"
+                       play-video__2="target: #leftVideo; src: video/daydreaming-tall.mp4"
+                       play-video__3="target: #rightVideo; src: video/daydreaming-tall.mp4"
                        event-set="_event: click; _target: #audioViz;
                                   audio-visualizer.src: #rhead"
-                       theta-length="15" rotation="0 180 0"></a-curvedimage>
+                       theta-length="15" rotation="0 180 0"
+        ></a-curvedimage>
         <a-image mixin="album" src="#lcd" position="0 1 -2"
                  event-set="_event: click; _target: #audioViz;
                             audio-visualizer.src: #dance"
                  play-audio="src: #dance"
-                 play-video="target: #video; src: video/dance.mp4"></a-image>
+                 play-video="target: #video; src: video/dance.mp4"
+                 play-video__2="target: #leftVideo; src: video/dance-tall.mp4"
+                 play-video__3="target: #rightVideo; src: video/dance-tall.mp4"
+        ></a-image>
         <a-curvedimage mixin="album" src="#lana" position="0.6 1 2" radius="4"
                        event-set="_event: click; _target: #audioViz;
                                   audio-visualizer.src: #ss"
                        play-audio="src: #ss"
-                       play-video="target: #video; src: video/summertime.mp4"
+                       play-video__1="target: #video; src: video/summertime.mp4"
+                       play-video__2="target: #leftVideo; src: video/summertime-tall.mp4"
+                       play-video__3="target: #rightVideo; src: video/summertime-tall.mp4"
                        theta-length="15" rotation="0 160 0"></a-curvedimage>
       </a-entity>
 
@@ -90,7 +106,7 @@
         position="-2.3 0.1 -1.9"></a-entity>
 
       <!-- Lights. -->
-      <a-light type="ambient" color="#444"></a-light>
+      <a-light type="ambient" color="#777"></a-light>
       <a-entity
         light="type: spot; color: #BBB; penumbra: 0.8; decay: 0; distance: 50"
         position="0 10 20" rotation="-15 0 0"
