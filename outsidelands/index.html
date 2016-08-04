@@ -12,6 +12,7 @@
     <script src="components/audio-visualizer-spectrum-scale.js"></script>
     <script src="components/pause.js"></script>
     <script src="components/play-audio.js"></script>
+    <script src="components/play-video.js"></script>
     <script src="components/scale-y-color.js"></script>
   </head>
   <body>
@@ -48,8 +49,15 @@
                   entity-generator="mixin: bar; num: 200"
                   layout="type: circle; radius: 4.5"
                   rotation="0 135 0"></a-entity>
+        <!-- Video. -->
+        <a-video id="video" src="video/daydreaming.mp4" height="17" width="24"
+                 position="0 7 -6"></a-video>
         <!-- Stage light.-->
-        <a-light type="point" decay="2" distance="35"></a-light>
+        <a-light type="point" decay="2" distance="35" intensity="0.5"
+                 animation="property: light.intensity; dir: alternate; loop: true;
+                            to: 1.4"
+                 animation__color="property: light.color; dir: alternate; loop: true;
+                                   to: #EEF"></a-light>
       </a-entity>
 
       <!-- Album UI. -->
@@ -57,24 +65,29 @@
                            loop: true; to: 0 0.02 0">
         <a-curvedimage mixin="album" src="#rhead" position="-1 1 2" radius="4"
                        play-audio="src: #rhead"
+                       play-video="target: #video; src: video/daydreaming.mp4"
                        event-set="_event: click; _target: #audioViz;
                                   audio-visualizer.src: #rhead"
                        theta-length="15" rotation="0 180 0"></a-curvedimage>
         <a-image mixin="album" src="#lcd" position="0 1 -2"
                  event-set="_event: click; _target: #audioViz;
                             audio-visualizer.src: #dance"
-                 play-audio="src: #dance"></a-image>
+                 play-audio="src: #dance"
+                 play-video="target: #video; src: video/dance.mp4"></a-image>
         <a-curvedimage mixin="album" src="#lana" position="0.6 1 2" radius="4"
                        event-set="_event: click; _target: #audioViz;
                                   audio-visualizer.src: #ss"
                        play-audio="src: #ss"
+                       play-video="target: #video; src: video/summertime.mp4"
                        theta-length="15" rotation="0 160 0"></a-curvedimage>
       </a-entity>
 
       <!-- Lights. -->
       <a-light type="ambient" color="#444"></a-light>
-      <a-entity light="type: spot; color: #BBB; penumbra: 0.8; decay: 0; distance: 50"
-                position="0 10 20" rotation="-15 0 0"></a-entity>
+      <a-entity
+        light="type: spot; color: #BBB; penumbra: 0.8; decay: 0; distance: 50"
+        position="0 10 20" rotation="-15 0 0"
+        animation="property: rotation; dir: alternate; loop: true; to: 0 0 0"></a-entity>
 
       <a-entity camera="userHeight: 1.8" look-controls wasd-controls>
         <a-cursor color="#DADADA" raycaster="interval: 500; objects: [mixin='album']">
