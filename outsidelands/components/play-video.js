@@ -12,8 +12,10 @@ AFRAME.registerComponent('play-video', {
 
     this.el.addEventListener(data.on, function () {
       data.target.components.material.material.map.image.pause();
-      data.target.setAttribute('src', data.src);
-      data.target.components.material.material.map.image.play();
+      setTimeout(function () {
+        data.target.setAttribute('src', data.src);
+        data.target.components.material.material.map.image.play();
+      }, 50);
     });
   }
 });
