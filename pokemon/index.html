@@ -19,20 +19,6 @@
     <script src="../lib/aframe-animation-component.min.js"></script>
     <script src="../lib/aframe-particle-system-component.min.js"></script>
     <script src="../lib/aframe-look-at-component.min.js"></script>
-    <style>
-      body {
-        background: #333;
-      }
-      body:before {
-        color: #FFF;
-        content: 'Loading...';
-        display: block;
-        font-family: monospace;
-        font-size: 64px;
-        padding: 30px;
-        text-align center;
-      }
-    </style>
   </head>
   <body>
     <a-scene>
@@ -57,11 +43,12 @@
       <a-entity ply-model="src: #seating-ply"
                 position="65 -8 -10" scale=".8 .8 .8" rotation="-90 0 0"></a-entity>
       <!-- Pikachu. -->
-      <a-entity ply-model="src: #pikachu-ply" position="1.4 -0.6 -3" scale=".1 .1 .1"
-                rotation="-90 -80 0"></a-entity>
-      <a-sphere src="images/lightning.jpg" position="1.4 -0.6 -3.5" rotation="-90 0 0"
-                color="#FFF" radius="1.8" opacity="0.3" shader="flat"
-                animation="property: opacity; loop: true; to: 0.4; dur: 1000"></a-sphere>
+      <a-entity position="1.4 -0.6 -3">
+        <a-entity ply-model="src: #pikachu-ply" scale=".1 .1 .1" rotation="-90 -80 0"></a-entity>
+        <a-sphere src="images/lightning.jpg" position="0 0 -0.5" rotation="-90 0 0"
+                  color="#FFF" radius="1.8" opacity="0.3" shader="flat"
+                  animation="property: opacity; loop: true; to: 0.4; dur: 1000"></a-sphere>
+      </a-entity>
 
       <!-- Particles. -->
       <a-entity particle-system="preset: dust; particleCount: 1000" position="0 2.5 -15"></a-entity>
@@ -80,5 +67,7 @@
       <a-sky color="#111"></a-sky>
       <a-camera position="0 1.8 4"></a-camera>
     </a-scene>
+
+    <script src="http://localhost:3333/build/aframe-inspector.js"></script>
   </body>
 </html>
